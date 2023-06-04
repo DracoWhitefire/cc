@@ -1,6 +1,6 @@
 local tArgs = { ... }
-if #tArgs ~= 1 then
-    print("gebruik: dig [grootte]")
+if #tArgs ~= 3 then
+    print("gebruik: dig [vooruit] [rechts] [omlaag]")
     return
 end
 
@@ -23,7 +23,7 @@ end
 
 local function refuel()
     local selected = turtle.getSelectedSlot()
-    for local i = 1, 16 do
+    for i = 1, 16 do
         turtle.select(i)
         if turtle.refuel(0) then
             if turtle.getFuelLevel() < turtle.getFuelLimit() then
@@ -36,7 +36,7 @@ end
 
 
 local function digForward(distance)
-    for local i = 1, distance do
+    for i = 1, distance do
         if turtle.detect() then
             turtle.dig()
         end
@@ -47,10 +47,10 @@ end
 local function digLayer(forwardSize, rightwardSize)
     local forward = forwardSize - 1
     local rightward = rightwardSize - 1
-    for local i = 1, forwardSize do
+    for i = 1, forwardSize do
         turtle.turnRight()
         digForward(rightward)
-        for local j = 1, rightward do
+        for j = 1, rightward do
             turtle.back()
         end
         turtle.turnLeft()
@@ -59,7 +59,7 @@ local function digLayer(forwardSize, rightwardSize)
             digForward(1)
         end
     end
-    for local k = 1, forward do
+    for k = 1, forward do
         turtle.back()
     end
 end
