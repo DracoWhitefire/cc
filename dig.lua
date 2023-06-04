@@ -5,8 +5,8 @@ if #tArgs ~= 1 then
 end
 
 local forwardSize = tonumber(tArgs[1])
-local rightwardSize = tonumber(tArgs[1])
-local downwardSize = tonumber(tArgs[1])
+local rightwardSize = tonumber(tArgs[2])
+local downwardSize = tonumber(tArgs[3])
 print("Ik begin bij het vakje voor me, linksboven aan de kubus, ga " .. forwardSize .. " vooruit, " .. rightwardSize .. " naar rechts en " .. downwardSize .. " omlaag.")
 print("Doorgaan? [J/n]")
 local response = io.read()
@@ -22,7 +22,7 @@ end
 
 
 local function refuel()
-    selected = turtle.getSelectedSlot()
+    local selected = turtle.getSelectedSlot()
     for local i = 1, 16 do
         turtle.select(i)
         if turtle.refuel(0) then
